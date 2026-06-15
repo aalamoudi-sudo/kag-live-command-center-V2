@@ -495,13 +495,14 @@ function v22UpdateLiveCountdown(){
   const totalMinutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
 
-  // حساب تقريبي فخم للعرض التنفيذي:
-  // الشهر = 30 يوم، الأسبوع = 7 أيام، ثم الأيام المتبقية
-  const totalDays = Math.floor(diffMs / (1000*60*60*24));
-  const months = Math.floor(totalDays / 30);
-  const daysAfterMonths = totalDays % 30;
-  const weeks = Math.floor(daysAfterMonths / 7);
-  const days = daysAfterMonths % 7;
+
+  const _n=new Date(),_e=new Date(target);
+  _n.setHours(0,0,0,0);_e.setHours(0,0,0,0);
+  let months=(_e.getFullYear()-_n.getFullYear())*12+(_e.getMonth()-_n.getMonth());
+  if(new Date(_n.getFullYear(),_n.getMonth()+months,_n.getDate())>_e)months--;
+  const _b=new Date(_n.getFullYear(),_n.getMonth()+months,_n.getDate());
+  const _rd=Math.round((_e-_b)/(864e5));
+  const weeks=Math.floor(_rd/7),days=_rd%7;
 
   // الدقائق المتبقية داخل الساعة الحالية
   const minutes = totalMinutes % 60;
@@ -888,20 +889,14 @@ function v27GetCountdownParts(){
   const minutes = totalMinutes % 60;
 
 
-  // حساب دقيق بالتقويم الفعلي
-  const _now = new Date(); _now.setHours(0,0,0,0);
-  const _end = new Date(target); _end.setHours(0,0,0,0);
-  // شهور كاملة
-  let _m = (_end.getFullYear()-_now.getFullYear())*12 + (_end.getMonth()-_now.getMonth());
-  // تحقق من اليوم
-  const _test = new Date(_now.getFullYear(), _now.getMonth()+_m, _now.getDate());
-  if(_test > _end) _m--;
-  // الأيام المتبقية بعد الشهور الكاملة
-  const _base = new Date(_now.getFullYear(), _now.getMonth()+_m, _now.getDate());
-  const _remDays = Math.round((_end - _base)/(1000*60*60*24));
-  const months = _m;
-  const weeks  = Math.floor(_remDays / 7);
-  const days   = _remDays % 7;
+
+  var _n=new Date(),_e=new Date(target);
+  _n.setHours(0,0,0,0);_e.setHours(0,0,0,0);
+  let months=(_e.getFullYear()-_n.getFullYear())*12+(_e.getMonth()-_n.getMonth());
+  if(new Date(_n.getFullYear(),_n.getMonth()+months,_n.getDate())>_e)months--;
+  const _b=new Date(_n.getFullYear(),_n.getMonth()+months,_n.getDate());
+  const _rd=Math.round((_e-_b)/(864e5));
+  const weeks=Math.floor(_rd/7),days=_rd%7;
   return {months, weeks, days, minutes, seconds, target};
 }
 function setCountdownText(prefix, parts){
