@@ -1575,11 +1575,16 @@ const defaultUiSettings = {
   title: "حدائق الملك عبدالله",
   subtitle: "صفحة عامة تنفيذية + لوحة مستقلة للمسارات الأربعة المعتمدة + استيراد جماعي من Excel/CSV",
   systemName: "مركز القيادة المباشر",
-  logoText: "KA",
+  logoText: "KAGA",
   theme: { cyan:"#A98BFF", sand:"#D9CCFF", bg:"#0B1020" },
   visibility: { feed:true, risks:true, sparks:true, english:true },
   logos: { amanah:"assets/riyadh-amanah-official.png", mayadeen:"assets/mayadeen-official.png" }
 };
+// إعادة ضبط logoText إذا كان محفوظاً بالقيمة القديمة
+(()=>{
+  const saved = JSON.parse(localStorage.getItem("kagV8UiSettings") || "null");
+  if(saved && saved.logoText === "KA") { saved.logoText = "KAGA"; localStorage.setItem("kagV8UiSettings", JSON.stringify(saved)); }
+})();
 let uiSettings = JSON.parse(localStorage.getItem("kagV8UiSettings") || "null") || structuredClone(defaultUiSettings);
 
 function saveUiSettings(){
