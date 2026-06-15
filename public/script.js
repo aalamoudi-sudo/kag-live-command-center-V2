@@ -887,19 +887,21 @@ function v27GetCountdownParts(){
   const seconds = totalSeconds % 60;
   const minutes = totalMinutes % 60;
 
-  const now2 = new Date(); now2.setHours(0,0,0,0);
-  const tgt2 = new Date(target); tgt2.setHours(0,0,0,0);
-  const y1=now2.getFullYear(), m1=now2.getMonth()+1, d1=now2.getDate();
-  const y2=tgt2.getFullYear(), m2=tgt2.getMonth()+1, d2=tgt2.getDate();
-  let months = (y2-y1)*12 + (m2-m1);
-  if(d1 > d2) months--;
-  const remYear = y1 + Math.floor((m1+months-1)/12);
-  const remMonth = ((m1+months-1)%12+12)%12 || 12;
-  const maxDay = new Date(remYear, remMonth, 0).getDate();
-  const remDate = new Date(remYear, remMonth-1, Math.min(d1,maxDay));
-  const remDays = Math.round((tgt2 - remDate)/(1000*60*60*24));
-  const weeks = Math.floor(remDays/7);
-  const days = remDays%7;
+
+  // حساب دقيق بالتقويم الفعلي
+  const _now = new Date(); _now.setHours(0,0,0,0);
+  const _end = new Date(target); _end.setHours(0,0,0,0);
+  // شهور كاملة
+  let _m = (_end.getFullYear()-_now.getFullYear())*12 + (_end.getMonth()-_now.getMonth());
+  // تحقق من اليوم
+  const _test = new Date(_now.getFullYear(), _now.getMonth()+_m, _now.getDate());
+  if(_test > _end) _m--;
+  // الأيام المتبقية بعد الشهور الكاملة
+  const _base = new Date(_now.getFullYear(), _now.getMonth()+_m, _now.getDate());
+  const _remDays = Math.round((_end - _base)/(1000*60*60*24));
+  const months = _m;
+  const weeks  = Math.floor(_remDays / 7);
+  const days   = _remDays % 7;
   return {months, weeks, days, minutes, seconds, target};
 }
 function setCountdownText(prefix, parts){
@@ -1783,20 +1785,15 @@ bindMobileUX();bindMobileMenuV17();bindDetailView();v20BindIntelligence();bindTi
     var seconds = totalSeconds % 60;
     var minutes = totalMinutes % 60;
 
-    var now2 = new Date(); now2.setHours(0,0,0,0);
-    var tgt2 = new Date(target); tgt2.setHours(0,0,0,0);
-    var y1=now2.getFullYear(), m1=now2.getMonth()+1, d1=now2.getDate();
-    var y2=tgt2.getFullYear(), m2=tgt2.getMonth()+1, d2=tgt2.getDate();
-    var months = (y2-y1)*12 + (m2-m1);
-    if(d1 > d2) months--;
-    var remYear = Math.floor((m1+months-1)/12) + y1 - (m1+months-1<1?1:0);
-    var remMonth = ((m1+months-1)%12+12)%12;
-    if(remMonth===0) remMonth=12;
-    var maxDay = new Date(remYear, remMonth, 0).getDate();
-    var remDate = new Date(remYear, remMonth-1, Math.min(d1,maxDay));
-    var remDays = Math.round((tgt2 - remDate)/(1000*60*60*24));
-    var weeks = Math.floor(remDays/7);
-    var days = remDays%7;
+    // حساب دقيق بالتقويم
+    var _now=new Date();_now.setHours(0,0,0,0);
+    var _end=new Date(target);_end.setHours(0,0,0,0);
+    var months=(_end.getFullYear()-_now.getFullYear())*12+(_end.getMonth()-_now.getMonth());
+    if(new Date(_now.getFullYear(),_now.getMonth()+months,_now.getDate())>_end) months--;
+    var _base=new Date(_now.getFullYear(),_now.getMonth()+months,_now.getDate());
+    var _rd=Math.round((_end-_base)/(1000*60*60*24));
+    var weeks=Math.floor(_rd/7);
+    var days=_rd%7;
 
     ["count","headerCount","settingsCount"].forEach(function(prefix){
       setText(prefix + "Months", String(months));
