@@ -1,4 +1,4 @@
-const defaultState={project:{title:"حدائق الملك عبدالله",phase:"مرحلة ما قبل الإطلاق",openingDate:"2026-11-01"},tracks:[{id:"أ",slug:"track-a",name:"التخطيط والتنسيق",ar:"Planning & Coordination",sub:"الحوكمة · الجدول الزمني · المخرجات · الاعتمادات · التصاريح · المخاطر · التغيير",status:"ضمن المسار",progress:83,tasks:18,done:15,active:3,risk:0,lead:"مدير مسار التخطيط والتنسيق",focus:"التنسيق والمتابعة مع أصحاب المصلحة",accent:"#7E6BFF"},{id:"ب",slug:"track-b",name:"الإعلام والتغطية",ar:"Communication & Marketing",sub:"الخطة الإعلامية · التغطية · التوثيق · الرسائل الإعلامية · المركز الإعلامي · المحتوى",status:"ضمن المسار",progress:58,tasks:24,done:14,active:7,risk:2,lead:"مدير مسار الإعلام والتغطية",focus:"إعداد التقارير والعروض المرتبطة بالمسار والتنسيق الإعلامي",accent:"#A98BFF"},{id:"ج",slug:"track-c",name:"الحفل الرسمي وفعالياته المصاحبة",ar:"Events & Supporting Activities",sub:"الضيافة · الإنتاج التقني · العروض الفنية · إدارة الحضور · VIP · البروتوكول",status:"تحت المتابعة",progress:41,tasks:21,done:9,active:8,risk:2,lead:"مدير مسار الحفل الرسمي وفعالياته المصاحبة",focus:"ضبط تجربة الفعالية والأنشطة المصاحبة والبروتوكول",accent:"#D9B86C"},{id:"د",slug:"track-d",name:"تجهيز وتفعيل الحديقة",ar:"Garden Setup & Activation",sub:"الحديقة · المسارات · النقل · السلامة والطوارئ · الاستدامة · البيئة · الجاهزية · التشغيل الميداني",status:"معرض للخطر",progress:47,tasks:24,done:8,active:5,risk:3,lead:"مدير مسار تجهيز وتفعيل الحديقة",focus:"جاهزية الحديقة والتشغيل الميداني وتفعيل الموقع",accent:"#6454C8"}],items:[{track:"أ",type:"tasks",title:"تثبيت الجدول الزمني وخطة الاعتمادات",owner:"PMC",status:"مكتملة",due:"2026-08-20"},{track:"أ",type:"milestones",title:"اعتماد سجل المخرجات والمخاطر",owner:"PMC",status:"مكتملة",due:"2026-08-22"},{track:"ب",type:"tasks",title:"إعداد خطة التواصل والتغطية الإعلامية",owner:"الإعلام والتغطية",status:"قيد التنفيذ",due:"2026-08-29"},{track:"ب",type:"risks",title:"تأخر اعتماد المحتوى الإعلامي",owner:"الإعلام والتغطية",status:"تحت المتابعة",due:"2026-08-29"},{track:"ج",type:"tasks",title:"تجهيز خطة الضيافة والبروتوكول و VIP",owner:"الفعاليات",status:"قيد التنفيذ",due:"2026-09-10"},{track:"ج",type:"milestones",title:"اعتماد برنامج الأنشطة المصاحبة",owner:"الفعاليات",status:"تحت المتابعة",due:"2026-09-18"},{track:"د",type:"tasks",title:"جاهزية مسارات الحديقة والتشغيل الميداني",owner:"التشغيل الميداني",status:"معرضة للخطر",due:"2026-09-24"},{track:"د",type:"risks",title:"اختبار السلامة والطوارئ والاستدامة",owner:"السلامة",status:"معرضة للخطر",due:"2026-09-12"}],feed:[],dailyLogs:[],decisions:[],snapshots:[]};
+const defaultState={project:{title:"حدائق الملك عبدالله",phase:"مرحلة ما قبل الإطلاق",openingDate:"2026-11-01"},tracks:[{id:"أ",slug:"track-a",name:"التخطيط والتنسيق",ar:"Planning & Coordination",sub:"الحوكمة · الجدول الزمني · المخرجات · الاعتمادات · التصاريح · المخاطر · التغيير",status:"ضمن المسار",progress:83,tasks:18,done:15,active:3,risk:0,lead:"قائد مسار التخطيط والتنسيق",focus:"التنسيق والمتابعة مع أصحاب المصلحة",accent:"#7E6BFF"},{id:"ب",slug:"track-b",name:"الإعلام والتغطية",ar:"Communication & Marketing",sub:"الخطة الإعلامية · التغطية · التوثيق · الرسائل الإعلامية · المركز الإعلامي · المحتوى",status:"ضمن المسار",progress:58,tasks:24,done:14,active:7,risk:2,lead:"قائد مسار الإعلام والتغطية",focus:"إعداد التقارير والعروض المرتبطة بالمسار والتنسيق الإعلامي",accent:"#A98BFF"},{id:"ج",slug:"track-c",name:"الحفل الرسمي وفعالياته المصاحبة",ar:"Events & Supporting Activities",sub:"الضيافة · الإنتاج التقني · العروض الفنية · إدارة الحضور · VIP · البروتوكول",status:"تحت المتابعة",progress:41,tasks:21,done:9,active:8,risk:2,lead:"قائد مسار الحفل الرسمي وفعالياته المصاحبة",focus:"ضبط تجربة الفعالية والأنشطة المصاحبة والبروتوكول",accent:"#D9B86C"},{id:"د",slug:"track-d",name:"تجهيز وتفعيل الحديقة",ar:"Garden Setup & Activation",sub:"الحديقة · المسارات · النقل · السلامة والطوارئ · الاستدامة · البيئة · الجاهزية · التشغيل الميداني",status:"معرض للخطر",progress:47,tasks:24,done:8,active:5,risk:3,lead:"قائد مسار تجهيز وتفعيل الحديقة",focus:"جاهزية الحديقة والتشغيل الميداني وتفعيل الموقع",accent:"#6454C8"}],items:[{track:"أ",type:"tasks",title:"تثبيت الجدول الزمني وخطة الاعتمادات",owner:"PMC",status:"مكتملة",due:"2026-08-20"},{track:"أ",type:"milestones",title:"اعتماد سجل المخرجات والمخاطر",owner:"PMC",status:"مكتملة",due:"2026-08-22"},{track:"ب",type:"tasks",title:"إعداد خطة التواصل والتغطية الإعلامية",owner:"الإعلام والتغطية",status:"قيد التنفيذ",due:"2026-08-29"},{track:"ب",type:"risks",title:"تأخر اعتماد المحتوى الإعلامي",owner:"الإعلام والتغطية",status:"تحت المتابعة",due:"2026-08-29"},{track:"ج",type:"tasks",title:"تجهيز خطة الضيافة والبروتوكول و VIP",owner:"الفعاليات",status:"قيد التنفيذ",due:"2026-09-10"},{track:"ج",type:"milestones",title:"اعتماد برنامج الأنشطة المصاحبة",owner:"الفعاليات",status:"تحت المتابعة",due:"2026-09-18"},{track:"د",type:"tasks",title:"جاهزية مسارات الحديقة والتشغيل الميداني",owner:"التشغيل الميداني",status:"معرضة للخطر",due:"2026-09-24"},{track:"د",type:"risks",title:"اختبار السلامة والطوارئ والاستدامة",owner:"السلامة",status:"معرضة للخطر",due:"2026-09-12"}],feed:[],dailyLogs:[],decisions:[],snapshots:[]};
 let state=JSON.parse(localStorage.getItem("kagV6BulkImport")||"null")||structuredClone(defaultState);
 if(state&&state.project)state.project.openingDate="2026-11-01";
 function escH(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];});}
@@ -191,6 +191,7 @@ function renderOverview(){
       </div>
       ${paHtml(planned, actual)}
     </div>
+    ${globalConflictAlertHtml()}
     ${state.tracks.map(trackCard).join("")}`;
   const risks=state.items.filter(i=>i.type==="risks");
   riskSnapshot.innerHTML=risks.length?risks.map(r=>`<div class="risk-row clickable-status" onclick="showDetails('risks','${r.track}')"><span>${escH(r.title)}</span><strong class="${colorByStatus(r.status)}">${escH(r.status)}</strong></div>`).join(""):`<p>لا توجد مخاطر مسجلة.</p>`;
@@ -203,7 +204,7 @@ function renderTrackPages(){
     const table=(title,type,rows)=>`<div class="glass panel">
       <div class="panel-title"><b></b><h3 class="clickable-status" onclick="showDetails('${type}','${t.id}')">${title}</h3></div>
       <div class="data-table"><div class="data-row head"><span>العنوان</span><span>المسؤول</span><span>الحالة</span><span>الاستحقاق</span></div>
-      ${rows.length?rows.map(i=>`<div class="data-row clickable-card" onclick="showDetails('${type}','${t.id}')"><span>${escH(i.title)}</span><span>${escH(i.owner)}</span><strong class="${colorByStatus(i.status)}">${escH(i.status)}</strong><span>${escH(i.due)||"-"}</span></div>`).join(""):`<div class="data-row"><span>لا توجد عناصر بعد</span><span>-</span><span>-</span><span>-</span></div>`}</div></div>`;
+      ${rows.length?rows.map(i=>`<div class="data-row clickable-card" onclick="showDetails('${type}','${t.id}')"><span>${escH(i.title)}${dependsOnBadgeHtml(i)}</span><span>${escH(i.owner)}</span><strong class="${colorByStatus(i.status)}">${escH(i.status)}</strong><span>${escH(i.due)||"-"}</span></div>`).join(""):`<div class="data-row"><span>لا توجد عناصر بعد</span><span>-</span><span>-</span><span>-</span></div>`}</div></div>`;
     const planned = plannedForTrack(t);
     el.innerHTML=`<div class="track-dashboard" style="--accent:${t.accent}">
       <div class="track-hero glass"><div class="track-hero-inner"><div><h2>${t.id} · ${t.name}</h2><p>${t.ar} · ${t.sub}</p></div><div class="ring"><b>${t.progress}%</b></div></div>
@@ -217,6 +218,7 @@ function renderTrackPages(){
       ${table("المخاطر","risks",items("risks"))}
       ${table("التصاريح والاعتمادات","permits",items("permits"))}
       ${table("المعالم الرئيسية","milestones",items("milestones"))}
+      ${conflictAlertHtml(t.id)}
     </div>`;
   });
 }
@@ -273,6 +275,49 @@ function parseItemDate(str){
   const d = new Date(str);
   return isNaN(d) ? null : d;
 }
+/* ============ الاعتماديات والتعارضات بين المهام ============ */
+const DONE_STATUSES_DEP = ["مكتملة","معتمدة","Completed","Cleared","مغلقة"];
+const ACTIVE_STATUSES_DEP = ["قيد التنفيذ","متاخرة","متأخرة","تحت المتابعة","In Progress","Watch"];
+function itemById(id){
+  if(!id) return null;
+  return (state.items||[]).find(i=>i.id===id) || null;
+}
+function dependencyConflicts(){
+  const out=[];
+  (state.items||[]).forEach(me=>{
+    if(!me.dependsOn) return;
+    me.dependsOn.split(",").map(s=>s.trim()).filter(Boolean).forEach(depId=>{
+      const pred = itemById(depId);
+      if(!pred) return;
+      if(ACTIVE_STATUSES_DEP.includes(me.status) && !DONE_STATUSES_DEP.includes(pred.status)){
+        out.push({me, pred, depId});
+      }
+    });
+  });
+  return out;
+}
+function dependencyConflictsForTrack(trackId){
+  return dependencyConflicts().filter(c=>c.me.track===trackId);
+}
+function dependsOnBadgeHtml(item){
+  if(!item.dependsOn) return "";
+  const ids = item.dependsOn.split(",").map(s=>s.trim()).filter(Boolean);
+  const titles = ids.map(id=>{ const p=itemById(id); return p ? p.title : id; });
+  return `<span class="dep-badge" title="${escH(titles.join('، '))}">🔗 يعتمد على: ${escH(titles.join('، '))}</span>`;
+}
+function conflictAlertHtml(trackId){
+  const conf = dependencyConflictsForTrack(trackId);
+  if(!conf.length) return "";
+  const rows = conf.map(c=>`<div class="conflict-row"><b>${escH(c.me.title)}</b> (${escH(c.me.status)}) — تعتمد على <b>${escH(c.pred.title)}</b> التي حالتها لا تزال «${escH(c.pred.status)}»</div>`).join("");
+  return `<div class="glass panel conflict-alert"><div class="panel-title"><b></b><h3>⚠️ تعارضات الاعتمادية (${conf.length})</h3></div><div class="conflict-list">${rows}</div></div>`;
+}
+function globalConflictAlertHtml(){
+  const conf = dependencyConflicts();
+  if(!conf.length) return "";
+  const rows = conf.map(c=>`<div class="conflict-row"><b>${escH(c.me.track)} · ${escH(c.me.title)}</b> (${escH(c.me.status)}) — تعتمد على <b>${escH(c.pred.title)}</b> التي حالتها لا تزال «${escH(c.pred.status)}»</div>`).join("");
+  return `<div class="glass panel conflict-alert"><div class="panel-title"><b></b><h3>⚠️ تعارضات اعتمادية عبر المشروع (${conf.length})</h3></div><div class="conflict-list">${rows}</div></div>`;
+}
+
 function v20OverdueItems(){
   const DONE = ["مكتملة","معتمدة","Completed","Cleared","مغلقة"];
   const now = new Date(); now.setHours(0,0,0,0);

@@ -2773,3 +2773,12 @@ footer{display:none!important;}
 @media(max-width:900px){
   .backend-sync-strip{grid-template-columns:1fr!important}
 }
+
+/* ============ شارة الاعتماد وبطاقة التعارضات ============ */
+.dep-badge{display:inline-block;margin-right:8px;margin-top:4px;padding:3px 9px;border-radius:6px;background:rgba(193,124,255,.14);border:1px solid rgba(193,124,255,.42);color:#D8B4FF;font-size:14px;font-weight:900;white-space:normal;line-height:1.5}
+.conflict-alert{border-color:rgba(255,94,107,.5)!important;box-shadow:0 0 24px rgba(255,94,107,.12),var(--shadow)}
+.conflict-alert .panel-title b{background:var(--red)}
+.conflict-alert .panel-title h3{color:var(--red)}
+.conflict-list{display:grid;gap:10px}
+.conflict-row{background:rgba(255,94,107,.08);border:1px solid rgba(255,94,107,.28);border-radius:8px;padding:12px 14px;font-size:17px;line-height:1.7;color:var(--text)}
+.conflict-row b{color:#FFD0D5}

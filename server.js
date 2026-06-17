@@ -102,19 +102,19 @@ function clearLoginFails(ip){ loginAttempts.delete(ip); }
 const TRACK_CONFIG = [
   { id:"أ", slug:"track-a", name:"التخطيط والتنسيق", ar:"Planning & Coordination",
     sub:"الحوكمة · الجدول الزمني · المخرجات · الاعتمادات · التصاريح · المخاطر · التغيير",
-    lead:"مدير مسار التخطيط والتنسيق", focus:"التنسيق والمتابعة مع أصحاب المصلحة",
+    lead:"قائد مسار التخطيط والتنسيق", focus:"التنسيق والمتابعة مع أصحاب المصلحة",
     accent:"#7E6BFF", planned:88 },
   { id:"ب", slug:"track-b", name:"الإعلام والتغطية", ar:"Communication & Marketing",
     sub:"الخطة الإعلامية · التغطية · التوثيق · الرسائل الإعلامية · المركز الإعلامي · المحتوى",
-    lead:"مدير مسار الإعلام والتغطية", focus:"التنسيق الإعلامي وإعداد التقارير والعروض",
+    lead:"قائد مسار الإعلام والتغطية", focus:"التنسيق الإعلامي وإعداد التقارير والعروض",
     accent:"#A98BFF", planned:66 },
   { id:"ج", slug:"track-c", name:"الحفل الرسمي وفعالياته المصاحبة", ar:"Events & Supporting Activities",
     sub:"الضيافة · الإنتاج التقني · العروض الفنية · إدارة الحضور · VIP · البروتوكول",
-    lead:"مدير مسار الحفل الرسمي وفعالياته المصاحبة", focus:"ضبط تجربة الفعالية والبروتوكول",
+    lead:"قائد مسار الحفل الرسمي وفعالياته المصاحبة", focus:"ضبط تجربة الفعالية والبروتوكول",
     accent:"#D9B86C", planned:55 },
   { id:"د", slug:"track-d", name:"تجهيز وتفعيل الحديقة", ar:"Garden Setup & Activation",
     sub:"الحديقة · المسارات · النقل · السلامة والطوارئ · الاستدامة · الجاهزية · التشغيل الميداني",
-    lead:"مدير مسار تجهيز وتفعيل الحديقة", focus:"جاهزية الحديقة والتشغيل الميداني",
+    lead:"قائد مسار تجهيز وتفعيل الحديقة", focus:"جاهزية الحديقة والتشغيل الميداني",
     accent:"#6454C8", planned:60 }
 ];
 const VALID_TRACKS = TRACK_CONFIG.map(t=>t.id);
@@ -179,6 +179,8 @@ function normalizeType(v){
 }
 function normalizeHeader(h){
   return String(h||"").trim().toLowerCase().replace(/\s+/g,"")
+    .replace("تاريخالبداية","startdate")
+    .replace("تعتمدعلى","dependson")
     .replace("المسار","track").replace("نوعالعنصر","type").replace("النوع","type")
     .replace("العنوان","title").replace("المهمة","title").replace("النشاط","title")
     .replace("الوصف","title").replace("المسؤول","owner").replace("الجهة","owner")
@@ -214,9 +216,9 @@ function parseCSV(text){
 function rowsToItems(rows){
   if(!rows.length) return [];
   const header = rows[0].map(normalizeHeader);
-  const known=["track","type","title","owner","status","due"];
+  const known=["track","type","title","owner","status","due","id","dependson","startdate"];
   const hasHeader = header.some(h=>known.includes(h));
-  let map={track:0,type:1,title:2,owner:3,status:4,due:5};
+  let map={track:0,type:1,title:2,owner:3,status:4,due:5,id:-1,dependson:-1,startdate:-1};
   let body=rows;
   if(hasHeader){
     known.forEach(k=>{ const idx=header.findIndex(h=>h===k||h.includes(k)); if(idx>=0) map[k]=idx; });
@@ -230,7 +232,10 @@ function rowsToItems(rows){
       title: clean(r[map.title], 220),
       owner: clean(r[map.owner], 120),
       status: clean(r[map.status]||"قيد التنفيذ", 60),
-      due: clean(r[map.due], 40)
+      due: clean(r[map.due], 40),
+      id: map.id>=0 ? clean(r[map.id], 20) : "",
+      dependsOn: map.dependson>=0 ? clean(r[map.dependson], 20) : "",
+      startDate: map.startdate>=0 ? clean(r[map.startdate], 40) : ""
     };
     if(!VALID_TRACKS.includes(item.track) || !item.title) return;
     items.push(item);
