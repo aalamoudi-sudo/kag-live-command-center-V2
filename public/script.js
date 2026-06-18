@@ -207,7 +207,7 @@ function renderTrackPages(){
       <div class="data-table"><div class="data-row head"><span>العنوان</span><span>المسؤول</span><span>الحالة</span><span>الاستحقاق</span></div>
       ${rows.length?rows.map(i=>`<div class="data-row clickable-card" onclick="showDetails('${type}','${t.id}')"><span>${escH(i.title)}${dependsOnBadgeHtml(i)}</span><span>${escH(i.owner)}</span><strong class="${colorByStatus(i.status)}">${escH(i.status)}</strong><span>${escH(i.due)||"-"}</span></div>`).join(""):`<div class="data-row"><span>لا توجد عناصر بعد</span><span>-</span><span>-</span><span>-</span></div>`}</div></div>`;
     const planned = plannedForTrack(t);
-    const trackDependentCount = items("tasks").filter(i=>i.dependsOn && String(i.dependsOn).trim()!=="").length;
+    const trackConflictCount = dependencyConflictsForTrack(t.id).length;
     el.innerHTML=`<div class="track-dashboard" style="--accent:${t.accent}">
       <div class="track-hero glass"><div class="track-hero-inner"><div><h2>${t.id} · ${t.name}</h2><p>${t.ar} · ${t.sub}</p></div><div class="ring"><b>${t.progress}%</b></div></div>
       <div class="track-kpis">
@@ -215,7 +215,7 @@ function renderTrackPages(){
         <div class="track-kpi clickable-kpi" onclick="showDetails('tasks','${t.id}')"><b>${t.done}</b><small>المهام المنجزة</small></div>
         <div class="track-kpi clickable-kpi" onclick="showDetails('tasks','${t.id}')"><b>${t.active}</b><small>المهام النشطة</small></div>
         <div class="track-kpi clickable-kpi" onclick="showDetails('risks','${t.id}')"><b>${t.risk}</b><small>المهام المعرضة للخطر</small></div>
-        <div class="track-kpi clickable-kpi" onclick="showDetails('tasks','${t.id}')"><b>${trackDependentCount}</b><small>مهام اعتمادية</small></div>
+        <div class="track-kpi${trackConflictCount?' clickable-kpi':''}" ${trackConflictCount?`onclick="document.getElementById('trackConflict-'+'${t.id}')?.scrollIntoView({behavior:'smooth'})"`:''}><b class="${trackConflictCount?'red':''}">${trackConflictCount}</b><small>مهام متعارضة الاعتماد</small></div>
       </div>${paHtml(planned, Number(t.progress||0))}</div>
       ${table("المهام","tasks",items("tasks"))}
       ${table("المخاطر","risks",items("risks"))}
@@ -312,7 +312,7 @@ function conflictAlertHtml(trackId){
   const conf = dependencyConflictsForTrack(trackId);
   if(!conf.length) return "";
   const rows = conf.map(c=>`<div class="conflict-row"><b>${escH(c.me.title)}</b> (${escH(c.me.status)}) — تعتمد على <b>${escH(c.pred.title)}</b> التي حالتها لا تزال «${escH(c.pred.status)}»</div>`).join("");
-  return `<div class="glass panel conflict-alert"><div class="panel-title"><b></b><h3>⚠️ تعارضات الاعتمادية (${conf.length})</h3></div><div class="conflict-list">${rows}</div></div>`;
+  return `<div id="trackConflict-${escH(trackId)}" class="glass panel conflict-alert"><div class="panel-title"><b></b><h3>⚠️ تعارضات الاعتمادية (${conf.length})</h3></div><div class="conflict-list">${rows}</div></div>`;
 }
 function globalConflictAlertHtml(){
   const conf = dependencyConflicts();
