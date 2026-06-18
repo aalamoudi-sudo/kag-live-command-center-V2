@@ -191,8 +191,9 @@ function renderOverview(){
       </div>
       ${paHtml(planned, actual)}
     </div>
-    ${globalConflictAlertHtml()}
     ${state.tracks.map(trackCard).join("")}`;
+  const globalConflictsEl = document.getElementById("globalConflictsSection");
+  if(globalConflictsEl) globalConflictsEl.innerHTML = globalConflictAlertHtml();
   const risks=state.items.filter(i=>i.type==="risks");
   riskSnapshot.innerHTML=risks.length?risks.map(r=>`<div class="risk-row clickable-status" onclick="showDetails('risks','${r.track}')"><span>${escH(r.title)}</span><strong class="${colorByStatus(r.status)}">${escH(r.status)}</strong></div>`).join(""):`<p>لا توجد مخاطر مسجلة.</p>`;
 }
