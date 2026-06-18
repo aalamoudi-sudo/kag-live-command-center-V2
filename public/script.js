@@ -214,7 +214,7 @@ function renderTrackPages(){
         <div class="track-kpi clickable-kpi" onclick="showDetails('tasks','${t.id}')"><b>${t.done}</b><small>المهام المنجزة</small></div>
         <div class="track-kpi clickable-kpi" onclick="showDetails('tasks','${t.id}')"><b>${t.active}</b><small>المهام النشطة</small></div>
         <div class="track-kpi clickable-kpi" onclick="showDetails('risks','${t.id}')"><b>${t.risk}</b><small>المهام المعرضة للخطر</small></div>
-        <div class="track-kpi clickable-kpi" onclick="showDetails('tasks','${t.id}')"><b>${trackDependentCount}</b><small>مهام معتمدة على أخرى</small></div>
+        <div class="track-kpi clickable-kpi" onclick="showDetails('tasks','${t.id}')"><b>${trackDependentCount}</b><small>مهام اعتمادية</small></div>
       </div>${paHtml(planned, Number(t.progress||0))}</div>
       ${table("المهام","tasks",items("tasks"))}
       ${table("المخاطر","risks",items("risks"))}
@@ -631,7 +631,7 @@ function renderKpis(){
     ["amber",k.active,"مهام نشطة","tasks"],
     ["gray",k.notStarted,"لم تبدأ","tasks"],
     ["red",k.risk,"مخاطر مفتوحة","risks"],
-    ["purple",k.dependentTasks,"مهام معتمدة على أخرى","tasks"],
+    ["purple",k.dependentTasks,"مهام اعتمادية","tasks"],
     ["sand",k.overall+"%","الإنجاز العام","track"],
     ["cyan",readiness+"%","جاهزية الافتتاح","milestones"]
   ].map(x=>`<article class="kpi glass ${x[0]} clickable-kpi" onclick="showDetails('${x[3]}')"><h3>${x[1]}</h3><small>${x[2]}</small></article>`).join("");
