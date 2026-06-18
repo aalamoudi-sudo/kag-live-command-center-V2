@@ -2782,3 +2782,13 @@ footer{display:none!important;}
 .conflict-list{display:grid;gap:10px}
 .conflict-row{background:rgba(255,94,107,.08);border:1px solid rgba(255,94,107,.28);border-radius:8px;padding:12px 14px;font-size:17px;line-height:1.7;color:var(--text)}
 .conflict-row b{color:#FFD0D5}
+
+/* ============ ألوان إضافية لخانات KPI ============ */
+.kpi.gray{color:#9ab8c1}
+.kpi.purple{color:#C17CFF}
+.gray{color:#9ab8c1}
+.purple{color:#C17CFF}
+@media(min-width:1201px){.kpi-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* تعديل شبكة مؤشرات المسار لاستيعاب الخانة الإضافية (مهام معتمدة على أخرى) */
+@media(min-width:781px){.track-kpis{grid-template-columns:repeat(5,1fr)!important}}
