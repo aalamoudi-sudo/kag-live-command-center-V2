@@ -1539,7 +1539,6 @@ body.admin-unlocked .admin-session-bar{display:block}
 }
 .home-tracks-grid .track-card{
   min-height:315px;
-  height:315px;
   display:flex;
   flex-direction:column;
 }
@@ -2804,5 +2803,3 @@ footer{display:none!important;}
 .next-deadline span{font-size:14px;color:var(--sand,#e8bd98);font-weight:900}
 .next-deadline.empty{color:var(--muted,#9ab8c1);font-size:14px;text-align:center;justify-content:center}
 
-/* على الشاشات الصغيرة (عمود واحد) لا حاجة لتثبيت الارتفاع لأن مشكلة الفراغ خاصة بالشبكة متعددة الأعمدة */
-@media(max-width:1100px){.home-tracks-grid .track-card{height:auto!important}}
