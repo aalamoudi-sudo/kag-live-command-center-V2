@@ -1539,6 +1539,7 @@ body.admin-unlocked .admin-session-bar{display:block}
 }
 .home-tracks-grid .track-card{
   min-height:315px;
+  height:315px;
   display:flex;
   flex-direction:column;
 }
@@ -2792,3 +2793,16 @@ footer{display:none!important;}
 
 /* تعديل شبكة مؤشرات المسار لاستيعاب الخانة الإضافية (مهام معتمدة على أخرى) */
 @media(min-width:781px){.track-kpis{grid-template-columns:repeat(5,1fr)!important}}
+
+/* ============ أقرب موعد استحقاق داخل بطاقة المسار بالصفحة الرئيسية ============ */
+.track-body{grid-template-columns:105px 1fr !important;display:grid;grid-template-areas:"ring mini" "deadline deadline";gap:14px 18px}
+.track-body .ring{grid-area:ring}
+.track-body .mini-grid{grid-area:mini}
+.next-deadline{grid-area:deadline;background:rgba(5,19,26,.6);border:1px solid rgba(84,174,197,.22);border-radius:8px;padding:10px 14px;display:flex;flex-direction:column;gap:2px}
+.next-deadline small{color:var(--muted,#9ab8c1);font-size:13px;font-weight:900}
+.next-deadline b{font-size:17px;color:var(--text,#edf9ff);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.next-deadline span{font-size:14px;color:var(--sand,#e8bd98);font-weight:900}
+.next-deadline.empty{color:var(--muted,#9ab8c1);font-size:14px;text-align:center;justify-content:center}
+
+/* على الشاشات الصغيرة (عمود واحد) لا حاجة لتثبيت الارتفاع لأن مشكلة الفراغ خاصة بالشبكة متعددة الأعمدة */
+@media(max-width:1100px){.home-tracks-grid .track-card{height:auto!important}}

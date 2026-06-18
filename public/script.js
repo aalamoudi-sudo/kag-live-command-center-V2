@@ -308,6 +308,16 @@ function dependsOnBadgeHtml(item){
   const titles = ids.map(id=>{ const p=itemById(id); return p ? p.title : id; });
   return `<span class="dep-badge" title="${escH(titles.join('، '))}">🔗 يعتمد على: ${escH(titles.join('، '))}</span>`;
 }
+function nextDeadlineForTrack(trackId){
+  const DONE = ["مكتملة","معتمدة","Completed","Cleared","مغلقة"];
+  const now = new Date(); now.setHours(0,0,0,0);
+  const upcoming = (state.items||[])
+    .filter(i=>i.track===trackId && i.type==="tasks" && !DONE.includes(i.status))
+    .map(i=>({item:i, d: i.due ? parseItemDate(String(i.due).trim()) : null}))
+    .filter(x=>x.d && x.d>=now)
+    .sort((a,b)=>a.d-b.d);
+  return upcoming.length ? upcoming[0] : null;
+}
 function conflictAlertHtml(trackId){
   const conf = dependencyConflictsForTrack(trackId);
   if(!conf.length) return "";
